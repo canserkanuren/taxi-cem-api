@@ -25,6 +25,6 @@ func SendMail(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, mailBody)
+	c.IndentedJSON(http.StatusOK, nil)
 	return
 }
