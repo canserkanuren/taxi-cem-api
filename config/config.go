@@ -13,6 +13,7 @@ type Configuration struct {
 type ServerConfiguration struct {
 	Port     string
 	SendMail *SendMailConfiguration
+	CorsUrl  string
 }
 
 type SendMailConfiguration struct {
@@ -43,6 +44,7 @@ func Setup(configPath string) {
 	configuration.Server.SendMail = new(SendMailConfiguration)
 	configuration.Server.SendMail.Key = os.Getenv("SENDMAIL_KEY")
 	configuration.Server.SendMail.DefaultMail = os.Getenv("SENDMAIL_DEFAULTMAIL")
+	configuration.Server.CorsUrl = os.Getenv("CORS_URL")
 	Config = configuration
 }
 

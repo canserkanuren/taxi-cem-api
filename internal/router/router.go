@@ -2,6 +2,7 @@ package router
 
 import (
 	"cem-taxi-api/internal/controllers"
+	"cem-taxi-api/pkg/cors"
 	"fmt"
 	"io"
 	"os"
@@ -30,6 +31,8 @@ func Setup() *gin.Engine {
 			param.ErrorMessage,
 		)
 	}))
+
+	app.Use(cors.CORSMiddleware())
 
 	app.Use(gin.Recovery())
 

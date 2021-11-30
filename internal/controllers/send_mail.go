@@ -14,17 +14,17 @@ func SendMail(c *gin.Context) {
 
 	if err := c.BindJSON(&mailBody); err != nil {
 		log.Printf("error when parsing json body %s", err)
-		c.IndentedJSON(http.StatusBadRequest, "Body error")
+		c.JSON(http.StatusBadRequest, "Body error")
 		return
 	}
 
 	err := services.SendMail(mailBody)
 
 	if err != "" {
-		c.IndentedJSON(http.StatusBadRequest, "Mail sending error"+err)
+		c.JSON(http.StatusBadRequest, "Mail sending error"+err)
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, nil)
+	c.JSON(http.StatusOK, nil)
 	return
 }
